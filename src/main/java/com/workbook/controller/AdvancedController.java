@@ -20,7 +20,7 @@ public class AdvancedController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
-        questionsDaoData.setup("src/main/resources/questions_advances.txt", 1, 79); // TODO: 2019.07.03.
+        questionsDaoData.setup("src/main/resources/questions_advanced.txt", 1, 79); // TODO: 2019.07.03.
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
         context.setVariable("title", "Advanced questions");

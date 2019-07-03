@@ -44,13 +44,15 @@
 <div class="container">
 <h1 th:text="${title}">ez az oldal</h1>
     <div id="products" class="row">
-        <h3>ide kellene a kerdes</h3>
         <div class="col col-sm-12 col-md-6 col-lg-4" th:each="question : ${questions}">
             <div class="card">
                 <div class="card-body">
                     <div class="card-text">
                         <p class="lead" th:text="${question}"></p>
                     </div>
+                    <form action="http://google.com/search?q=What+is+a+class+?" method="get">
+                        <button type="submit" name="search" class="btn btn-secondary" th:value="${question}" >-</button>
+                    </form>
                 </div>
             </div>
         </div>

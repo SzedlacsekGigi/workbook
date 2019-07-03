@@ -27,6 +27,10 @@ public class QuestionsDaoSQL implements QuestionsDao {
         return instance;
     }
 
+    public String getQuestionsURL(String toFormat){
+        String formatted = toFormat.replaceAll(" ", "+");
+        return "https://google.com/search?=q" + formatted;
+    }
 
     @Override
     public String[] getAll() throws IOException {
