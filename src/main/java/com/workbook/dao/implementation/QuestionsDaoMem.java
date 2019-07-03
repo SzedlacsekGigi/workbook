@@ -5,45 +5,52 @@ import com.workbook.dao.QuestionsDao;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
 
 
-public class QuestionsDaoSQL implements QuestionsDao {
+public class QuestionsDaoMem implements QuestionsDao {
 
 
     private String filePath;
-    private Integer fromLine;
-    private Integer toLine;
 
-
-    private static QuestionsDaoSQL instance = null;
-
-    private QuestionsDaoSQL() {
+    public HashMap<String, String> getSearchFormat(String[] list){
+        HashMap<String, String> questsionsWithSearch = new HashMap<>();
+        for (String line: list
+             ) {
+            questsionsWithSearch.put(line, getQuestionsURL(line));
+        }
+        return questsionsWithSearch;
     }
 
-    public static QuestionsDaoSQL getInstance() {
+
+    private static QuestionsDaoMem instance = null;
+
+    private QuestionsDaoMem() {
+    }
+
+    public static QuestionsDaoMem getInstance() {
         if (instance == null) {
-            instance = new QuestionsDaoSQL();
+            instance = new QuestionsDaoMem();
         }
         return instance;
     }
 
     public String getQuestionsURL(String toFormat){
         String formatted = toFormat.replaceAll(" ", "+");
-        return "https://google.com/search?=q" + formatted;
+        return "https://google.com/search?q=" + formatted;
     }
 
     @Override
-    public String[] getAll() throws IOException {
+    public HashMap<String, String> getAll() throws IOException {
         String fullText = read();
         String[] lines = fullText.split("\n");
-        return lines;
+        return getSearchFormat(lines);
     }
 
     public void setup(String filePath, Integer fromLine, Integer toLine) {
         if (toLine < fromLine || fromLine < 1) throw new IllegalArgumentException("Not valid line numbers");
         this.filePath = filePath;
-        this.fromLine = fromLine - 1;
-        this.toLine = toLine;
+        Integer fromLine1 = fromLine - 1;
     }
 
     public String read() throws IOException {
@@ -57,6 +64,8 @@ public class QuestionsDaoSQL implements QuestionsDao {
         }
         return fullText;
     }
+
+
 }
 
 

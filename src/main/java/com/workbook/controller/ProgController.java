@@ -2,7 +2,7 @@ package com.workbook.controller;
 
 import com.workbook.config.TemplateEngineUtil;
 import com.workbook.dao.QuestionsDao;
-import com.workbook.dao.implementation.QuestionsDaoSQL;
+import com.workbook.dao.implementation.QuestionsDaoMem;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class ProgController extends HttpServlet {
 
-    private QuestionsDao questionsDaoData = QuestionsDaoSQL.getInstance();
+    private QuestionsDao questionsDaoData = QuestionsDaoMem.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {

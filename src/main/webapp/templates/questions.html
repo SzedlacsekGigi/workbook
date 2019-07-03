@@ -42,17 +42,14 @@
 <script type="text/javascript"></script>
 
 <div class="container">
-<h1 th:text="${title}">ez az oldal</h1>
+<h1 th:text="${title}">ez az oldal</h1><br>
     <div id="products" class="row">
         <div class="col col-sm-12 col-md-6 col-lg-4" th:each="question : ${questions}">
             <div class="card">
                 <div class="card-body">
                     <div class="card-text">
-                        <p class="lead" th:text="${question}"></p>
+                        <p class="lead" th:text="${question.key.toString()}" th:onclick="'window.location.href = \'' + ${question.value.toString()} + '\''"></p>
                     </div>
-                    <form action="http://google.com/search?q=What+is+a+class+?" method="get">
-                        <button type="submit" name="search" class="btn btn-secondary" th:value="${question}" >-</button>
-                    </form>
                 </div>
             </div>
         </div>
