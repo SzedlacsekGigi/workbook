@@ -15,7 +15,7 @@ What is conditional expression in Python?
 What are different types of arguments in Python?
 What is variable shadowing? (context: variable scope)
 What can happen if you try to delete/drop/add an item from a List, while you are iterating over it in Python?
-What is the "golden rule" of variable scoping in Python (context: LEGB)? What is the lifetime of variables?
+What is the golden rule of variable scoping in Python (context: LEGB)? What is the lifetime of variables?
 If you need to access the iterator variable after a for loop, how would you do it in Python?
 What type of elements can a list contain in Python?
 What is slice operator in Python and how to use?

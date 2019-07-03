@@ -11,19 +11,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/oop"})
+@WebServlet(urlPatterns = {"/web"})
 
-public class OopController extends HttpServlet {
+public class WebController extends HttpServlet {
 
     private QuestionsDao questionsDaoData = QuestionsDaoSQL.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
-        questionsDaoData.setup("src/main/resources/questions_oop.txt", 1, 79);
+        questionsDaoData.setup("src/main/resources/questions_web.txt", 1, 59); //// TODO: 2019.07.03.  
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
-        context.setVariable("title", "OOP questions");
+        context.setVariable("title", "Web questions");
         context.setVariable("questions", questionsDaoData.getAll());
         engine.process("questions.html", context, resp.getWriter());
     }

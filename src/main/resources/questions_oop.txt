@@ -30,13 +30,13 @@ What are the Object Oriented Principles? Explain the concepts with realistic exa
 What is method overloading?
 What is method overriding?
 Explain how object oriented languages attempt to simplify memory management for Programmers.
-Explain the “Single Responsibility” principle! 
+Explain the 'Single Responsibility' principle!
 What is an object oriented program? Explain, show.
 How do you make a class immutable? What do you need to watch out for?
 How many instances can be created for an abstract class? 
 What is autoboxing and unboxing?
 If you have a variable, that shall store a positive whole number between 0 and 200, what primitive type would you use to store it?
-What is the "golden rule" of variable scoping in Java? What is the lifetime of variables?
+What is the golden rule of variable scoping in Java? What is the lifetime of variables?
 What is the purpose of the ‘equals()’ method?
 What is the difference between '==' and 'equals()'?
 What does the ‘static’ keyword mean?
@@ -69,7 +69,7 @@ When you use method overriding, can you change the access level of the method, f
 Can the main method be overridden? Explain your answer!
 When you use method overriding, can you throw fewer exceptions in the subclass than in the parent class? Why?
 When you use method overriding, can you throw more exceptions in the subclass than in the parent class? Why? 
-What does "final" mean in case of a variable, method or a class?
+What does final mean in case of a variable, method or a class?
 What is the super keyword?
 What are “generics”? When to use? Show examples.
 What is the benefit of having “generic” containers?

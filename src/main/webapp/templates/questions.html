@@ -42,10 +42,10 @@
 <script type="text/javascript"></script>
 
 <div class="container">
-<h1>ez az oop oldal</h1>
+<h1 th:text="${title}">ez az oldal</h1>
     <div id="products" class="row">
         <h3>ide kellene a kerdes</h3>
-        <div class="col col-sm-12 col-md-6 col-lg-4" th:each="question : ${OopQuestions}">
+        <div class="col col-sm-12 col-md-6 col-lg-4" th:each="question : ${questions}">
             <div class="card">
                 <div class="card-body">
                     <div class="card-text">
