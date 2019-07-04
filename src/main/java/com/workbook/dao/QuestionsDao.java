@@ -9,5 +9,6 @@ public interface QuestionsDao {
     HashMap<String, ArrayList<String>> getAll() throws IOException;
     void setup(String filePath, Integer fromLine, Integer toLine);
     String read() throws IOException;
+    void addAnswer(String questionKey, String answer);
 
 }
