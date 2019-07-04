@@ -5,6 +5,7 @@ import com.workbook.dao.QuestionsDao;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -13,13 +14,17 @@ public class QuestionsDaoMem implements QuestionsDao {
 
     private String filePath;
 
-    public HashMap<String, String> getSearchFormat(String[] list){
-        HashMap<String, String> questsionsWithSearch = new HashMap<>();
+    public HashMap<String, ArrayList<String>> getSearchFormat(String[] list){
+        HashMap<String, ArrayList<String>> questionsWithSearch = new HashMap<>();
         for (String line: list
              ) {
-            questsionsWithSearch.put(line, getQuestionsURL(line));
+            ArrayList<String> values = new ArrayList<>();
+            values.add(getQuestionsURLGoogle(line));
+            values.add(getQuestionsURLStackoverflow(line));
+            values.add(getQuestionsURLW3School(line));
+            questionsWithSearch.put(line, values);
         }
-        return questsionsWithSearch;
+        return questionsWithSearch;
     }
 
 
@@ -35,13 +40,23 @@ public class QuestionsDaoMem implements QuestionsDao {
         return instance;
     }
 
-    public String getQuestionsURL(String toFormat){
+    public String getQuestionsURLGoogle(String toFormat){
         String formatted = toFormat.replaceAll(" ", "+");
         return "https://google.com/search?q=" + formatted;
     }
 
+    public String getQuestionsURLStackoverflow(String toFormat){
+        String formatted = toFormat.replaceAll(" ", "+");
+        return "https://www.google.com/search?q=site%3Astackoverflow.com+" + formatted;
+    }
+
+    public String getQuestionsURLW3School(String toFormat){
+        String formatted = toFormat.replaceAll(" ", "+");
+        return "https://www.google.com/search?q=site%3Aw3schools.com+" + formatted;
+    }
+
     @Override
-    public HashMap<String, String> getAll() throws IOException {
+    public HashMap<String, ArrayList<String>> getAll() throws IOException {
         String fullText = read();
         String[] lines = fullText.split("\n");
         return getSearchFormat(lines);
