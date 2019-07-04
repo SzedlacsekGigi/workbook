@@ -39,8 +39,6 @@
 <div th:replace="navbar.html :: nav"></div>
 
 <div class="container">
-    <h1 th:text="${title}">ez az oldal</h1><br>
-    <div id="products" class="row">
 <h1 th:text="${title}">ez az oldal</h1><br>
     <div id="questions" class="row">
         <div class="col col-sm-12 col-md-6 col-lg-4" th:each="question : ${questions}">
@@ -49,23 +47,25 @@
                     <div class="card-text">
                         <p class="lead" th:text="${question.key.toString()}"></p>
                         <div>
-                            <button style="margin-left: 50px; margin-right: 20px" th:onclick="'window.location.href = \'' + ${question.value.get(0).toString()} + '\''">
-                                <img src="images/google.png" height="45" width="45"></button>
+                            <button style="margin-left: 20px; margin-right: 20px" th:onclick="'window.location.href = \'' + ${question.value.get(0).toString()} + '\''">
+                                <img src="/static/google.png" height="45" width="45"></button>
                             <button style="margin-right: 20px" th:onclick="'window.location.href = \'' + ${question.value.get(1).toString()} + '\''">
-                                <img src="images/stack.png" height="45" width="45"></button>
+                                <img src="/static/stack.png" height="45" width="45"></button>
                             <button th:onclick="'window.location.href = \'' + ${question.value.get(2).toString()} + '\''">
-                                <img src="images/w3.png" height="45" width="45"></button>
+                                <img src="/static/w3.png" height="45" width="45"></button>
                             <span th:switch="${question.value.get(3)}">
-                                <img th:case="'Unanswered'" alt="red" src="images/red-dot.png" height="45" width="45">
-                                <img th:case="*" alt="green" src="images/green-dot.png" height="45" width="45">
+                                <img th:case="'Unanswered'" alt="red" src="/static/red-dot.png" height="45" width="60">
+                                <img th:case="*" alt="green" src="/static/green-dot.png" height="45" width="45">
                             </span>
+                            <p></p>
                             <form action="/oop" method="post">
                                 <div id="answerBox">
                                     <label for="answer">My answer</label>
                                     <input type="text" id="answer" name="answer" placeholder="Your answer">
                                     <input type="hidden" name="questionKey" th:value="${question.key.toString()}"/>
                                 </div>
-                                <button id="sendAnswer" type="submit">Add my answer</button>
+                                <p></p>
+                                <button style="margin-right: 70px" id="sendAnswer" type="submit">Add my answer</button>
                             </form>
                         </div>
                     </div>
