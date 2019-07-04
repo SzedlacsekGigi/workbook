@@ -42,18 +42,20 @@ public class QuestionsDaoMem implements QuestionsDao {
 
     public String getQuestionsURLGoogle(String toFormat){
         String formatted = toFormat.replaceAll(" ", "+");
-        formatted.replaceAll("'", " ");
-        return "https://google.com/search?q=" + formatted;
+        String reformatted = formatted.replaceAll("'", "");
+        return "https://google.com/search?q=" + reformatted;
     }
 
     public String getQuestionsURLStackoverflow(String toFormat){
         String formatted = toFormat.replaceAll(" ", "+");
-        return "https://www.google.com/search?q=site%3Astackoverflow.com+" + formatted;
+        String reformatted = formatted.replaceAll("'", "");
+        return "https://www.google.com/search?q=site%3Astackoverflow.com+" + reformatted;
     }
 
     public String getQuestionsURLW3School(String toFormat){
         String formatted = toFormat.replaceAll(" ", "+");
-        return "https://www.google.com/search?q=site%3Aw3schools.com+" + formatted;
+        String reformatted = formatted.replaceAll("'", "");
+        return "https://www.google.com/search?q=site%3Aw3schools.com+" + reformatted;
     }
 
     @Override
