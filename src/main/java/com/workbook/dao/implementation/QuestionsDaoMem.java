@@ -42,6 +42,7 @@ public class QuestionsDaoMem implements QuestionsDao {
 
     public String getQuestionsURLGoogle(String toFormat){
         String formatted = toFormat.replaceAll(" ", "+");
+        formatted.replaceAll("'", " ");
         return "https://google.com/search?q=" + formatted;
     }
 
