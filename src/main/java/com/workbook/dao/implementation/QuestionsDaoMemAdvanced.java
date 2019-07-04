@@ -3,30 +3,30 @@ package com.workbook.dao.implementation;
 import com.workbook.dao.QuestionsDao;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 
-public class QuestionsDaoMem implements QuestionsDao {
+public class QuestionsDaoMemAdvanced implements QuestionsDao {
 
-    HashMap<String, ArrayList<String>> questionsWithSearch = new HashMap<>();
+    public HashMap<String, ArrayList<String>> getQuestionsWithSearch() {
+        return questionsWithSearch;
+    }
+
+    public HashMap<String, ArrayList<String>> questionsWithSearch = new HashMap<>();
 
     private String filePath;
 
     public HashMap<String, ArrayList<String>> getSearchFormat(String[] list) {
-
         for (String line : list
         ) {
             ArrayList<String> values = new ArrayList<>();
             values.add(getQuestionsURLGoogle(line));
             values.add(getQuestionsURLStackoverflow(line));
             values.add(getQuestionsURLW3School(line));
-//            if (values.get(3).equals("Unanswered") || values.get(3) == null){
             values.add(3, "Unanswered");
             questionsWithSearch.put(line, values);
         }
@@ -34,14 +34,16 @@ public class QuestionsDaoMem implements QuestionsDao {
     }
 
 
-    private static QuestionsDaoMem instance = null;
+    private static QuestionsDaoMemAdvanced instance = null;
 
-    private QuestionsDaoMem() {
+    private QuestionsDaoMemAdvanced() throws IOException {
+        setup("src/main/resources/questions_advanced.txt", 1, 68);
+        this.getAll();
     }
 
-    public static QuestionsDaoMem getInstance() {
+    public static QuestionsDaoMemAdvanced getInstance() throws IOException {
         if (instance == null) {
-            instance = new QuestionsDaoMem();
+            instance = new QuestionsDaoMemAdvanced();
         }
         return instance;
     }

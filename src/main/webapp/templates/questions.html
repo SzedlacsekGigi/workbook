@@ -58,7 +58,7 @@
                                 <img th:case="*" alt="green" src="/static/green-dot.png" height="45" width="45">
                             </span>
                             <p></p>
-                            <form action="/oop" method="post">
+                            <form th:action="${page}" method="post">
                                 <div id="answerBox">
                                     <label for="answer">My answer</label>
                                     <input type="text" id="answer" name="answer" placeholder="Your answer">

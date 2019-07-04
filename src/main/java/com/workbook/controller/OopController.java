@@ -2,7 +2,7 @@ package com.workbook.controller;
 
 import com.workbook.config.TemplateEngineUtil;
 import com.workbook.dao.QuestionsDao;
-import com.workbook.dao.implementation.QuestionsDaoMem;
+import com.workbook.dao.implementation.QuestionsDaoMemOop;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -17,17 +17,20 @@ import java.io.IOException;
 
 public class OopController extends HttpServlet {
 
-    private QuestionsDao questionsDaoData = QuestionsDaoMem.getInstance();
+    private QuestionsDao questionsDaoDataOop = QuestionsDaoMemOop.getInstance();
+
+    public OopController() throws IOException {
+    }
 
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
-        questionsDaoData.setup("src/main/resources/questions_oop.txt", 1, 79);
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
         context.setVariable("title", "OOP questions");
-        context.setVariable("questions", questionsDaoData.getAll());
+        context.setVariable("questions", questionsDaoDataOop.getQuestionsWithSearch());
+        context.setVariable("page", "/oop");
         engine.process("questions.html", context, resp.getWriter());
     }
 
@@ -37,7 +40,7 @@ public class OopController extends HttpServlet {
 
         String answer = request.getParameter("answer");
         String questionKey = request.getParameter("questionKey");
-        questionsDaoData.addAnswer(questionKey, answer);
+        questionsDaoDataOop.addAnswer(questionKey, answer);
         response.sendRedirect("/oop");
 
     }
