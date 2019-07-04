@@ -43,38 +43,16 @@
 <div class="container">
     <h1>Choose a category</h1><br>
     <div id="products" class="row">
-        <div class="col col-sm-12 col-md-6 col-lg-4">
+        <div class="col col-sm-12 col-md-6 col-lg-4" th:each="category : ${categories}">
             <div class="card">
                 <div class="card-body">
                     <div class="card-text">
-                        <p><a href="/progbasics">ProgBasics</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-text">
-                        <p><a href="/web">Web module</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-text">
-                        <p><a href="/oop">Object Oriented Programming</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-text">
-                        <p><a href="/advanced">Advanced</a></p>
+                        <a th:onclick="'window.location.href = \'/' + ${category.key.toString().toLowerCase()} + '\''"><p class="lead" th:text="${category.key.toString()}"></a></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 
 </body>
