@@ -47,25 +47,25 @@
                     <div class="card-text">
                         <p class="lead" th:text="${question.key.toString()}"></p>
                         <div>
-                            <button style="margin-left: 20px; margin-right: 20px" th:onclick="'window.location.href = \'' + ${question.value.get(0).toString()} + '\''">
-                                <img src="/static/google.png" height="30" width="30"></button>
+                            <button style="margin-left: 45px; margin-right: 20px" th:onclick="'window.location.href = \'' + ${question.value.get(0).toString()} + '\''">
+                                <img src="/static/google.png" height="45" width="45"></button>
                             <button style="margin-right: 20px" th:onclick="'window.location.href = \'' + ${question.value.get(1).toString()} + '\''">
-                                <img src="/static/stack.png" height="30" width="30"></button>
+                                <img src="/static/stack.png" height="45" width="45"></button>
                             <button th:onclick="'window.location.href = \'' + ${question.value.get(2).toString()} + '\''">
-                                <img src="/static/w3.png" height="30" width="30"></button>
-                            <span th:switch="${question.value.get(3)}">
-                                <img th:case="'Unanswered'" alt="red" src="/static/red-dot.png" height="30" width="40">
-                                <img th:case="*" alt="green" src="/static/green-dot.png" height="30" width="30">
-                            </span>
-                            <p></p>
+                                <img src="/static/w3.png" height="45" width="45"></button>
                             <form th:action="${page}" method="post">
-                                <div id="answerBox">
-                                    <label for="answer">My answer</label>
+                                <p></p>
+                                <div id="answerBox" style="margin-left: 20px">
+                                    <label for="answer" style="margin-right: 10px">My answer   </label>
                                     <input type="text" id="answer" name="answer" placeholder="Your answer">
                                     <input type="hidden" name="questionKey" th:value="${question.key.toString()}"/>
+                                    <span th:switch="${question.value.get(3)}">
+                                <img th:case="'Unanswered'" alt="red" src="/static/red-dot.png" height="25" width="30">
+                                <img th:case="*" alt="green" src="/static/green-dot.png" height="25" width="25">
+                            </span>
                                 </div>
                                 <p></p>
-                                <button style="margin-right: 70px" id="sendAnswer" type="submit">Add my answer</button>
+                                <button style="margin-left: 100px" id="sendAnswer" type="submit">Add my answer</button>
                             </form>
                         </div>
                     </div>
