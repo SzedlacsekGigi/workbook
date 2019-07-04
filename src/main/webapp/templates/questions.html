@@ -4,6 +4,7 @@
     <meta charset="utf-8"/>
     <meta name="author" content="Codecool"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="stylesheet" href="static/css.css">
 
     <title>Workbook</title>
 
@@ -43,7 +44,7 @@
 
 <div class="container">
 <h1 th:text="${title}">ez az oldal</h1><br>
-    <div id="products" class="row">
+    <div id="questions" class="row">
         <div class="col col-sm-12 col-md-6 col-lg-4" th:each="question : ${questions}">
             <div class="card">
                 <div class="card-body">
