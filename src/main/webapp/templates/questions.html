@@ -27,32 +27,31 @@
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- End of Bootstrap components -->
 
-    <link rel="stylesheet" type="text/css" href="/static/css/custom.css"/>
-
-
-    <link rel="stylesheet" type="text/css" href="/static/css/custom_2.css"/>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
+    <link rel="stylesheet" href="/static/css.css">
 </head>
 
 
 <body>
 <script type="text/javascript"></script>
+<div th:replace="navbar.html :: nav"></div>
 
 <div class="container">
     <h1 th:text="${title}">ez az oldal</h1><br>
     <div id="products" class="row">
+<h1 th:text="${title}">ez az oldal</h1><br>
+    <div id="questions" class="row">
         <div class="col col-sm-12 col-md-6 col-lg-4" th:each="question : ${questions}">
             <div class="card">
                 <div class="card-body">
                     <div class="card-text">
                         <p class="lead" th:text="${question.key.toString()}"></p>
                         <div>
-                            <button th:onclick="'window.location.href = \'' + ${question.value.get(0).toString()} + '\''">
+                            <button style="margin-left: 50px; margin-right: 20px" th:onclick="'window.location.href = \'' + ${question.value.get(0).toString()} + '\''">
                                 <img src="images/google.png" height="45" width="45"></button>
-                            <button th:onclick="'window.location.href = \'' + ${question.value.get(1).toString()} + '\''">
+                            <button style="margin-right: 20px" th:onclick="'window.location.href = \'' + ${question.value.get(1).toString()} + '\''">
                                 <img src="images/stack.png" height="45" width="45"></button>
                             <button th:onclick="'window.location.href = \'' + ${question.value.get(2).toString()} + '\''">
                                 <img src="images/w3.png" height="45" width="45"></button>
